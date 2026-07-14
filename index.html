@@ -136,71 +136,67 @@
           <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
 </a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Project 1 -->
-<div class="group" data-purpose="project-card">
-<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
-<img alt="Modern Apartment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDltJZkGBk2FD0kb2dkbX6kdQAh4gtLaTc60MfbciJdl2Qh4f2CqSQOxLl7dcYK8REmgCRgH2E6_mhwZwEQ8nk_JLm2dlfTcq7kGPSWlMd5A8clEHrMkMVLUqKLyfbgm0s_WuudWKUJxD4PCBkP4EP7XO7Ob2CHzaI1R1KS6HL9-ID5-8gYyuTRnseTrxVdNj_1gB1bETgDi0rL9YGfVBR2c3-09UTUcrgMrZpTIqsAIEXpXNWNLqSjQkzV_4lRTp9oaHVpbnZlc0s"/>
-</div>
-<h3 class="font-serif text-lg mb-1">Modern Apartment</h3>
-<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
-<span>Gurugram</span>
-<span>•</span>
-<span>Residential</span>
-<span>•</span>
-<span>1800 sq ft</span>
-</div>
-</div>
-<!-- Project 2 -->
-<div class="group" data-purpose="project-card">
-<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
-<img alt="The Urban Nest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfKcuCNZlloheVXw_hC8i8MSzTknRBRRv8LigfBeSSd-YiaVzZhIEGFGqjEk_xXnDXyN2w067it7fnUbZGBrhb-eqJVEnl37vtgynTfcSDgE_criuSRtWQly4TXbq4wFKnnWzhv213imDV47jEXcqcyW4QxEc_Ze8w3Gq04U7CqKrjBzcPFCeGr-IATZ1hHaDGRm2lAX3Ii0r1TNrywl1E4uAn_yVGEMZG2KQx2dpLoEM5U3Uk3wi7aZJbcD7PKBT7U5UreeUqeU"/>
-</div>
-<h3 class="font-serif text-lg mb-1">The Urban Nest</h3>
-<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
-<span>Delhi</span>
-<span>•</span>
-<span>Residential</span>
-<span>•</span>
-<span>2200 sq ft</span>
-</div>
-</div>
-<!-- Project 3 -->
-<div class="group" data-purpose="project-card">
-<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
-<img alt="Corporate Office" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT5jtjLDeJ1uLIAG6-z3f0R7WmO45ATObfe70gG-rQFGOEhl-vJAR36idng2fTTAiNvHnPU3Vtizb9WRD-QDY1FmzJ8XrwFrVPKUnxXpgyEGiKWevuHCwQfzSCyF2VH0VE1ZZNP4A9K1WPeTv3F9UvMcyRA8csb3tEYf0YKqTPz6KElN15uBgz2DsXmdVvKFbTy4M6veNsk9Whi4EZ5AKDa9JE35A1404SlQwuw7K_Jno4UN_zoUJ3DcyIJE-b5RZmXxYYBc7MuzI"/>
-</div>
-<h3 class="font-serif text-lg mb-1">Corporate Office</h3>
-<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
-<span>Noida</span>
-<span>•</span>
-<span>Commercial</span>
-<span>•</span>
-<span>4500 sq ft</span>
-</div>
-</div>
-<!-- Project 4 -->
-<div class="group" data-purpose="project-card">
-<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
-<img alt="Café Arbour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTryY_m2bCwLuIDUOG1fCJT5TSu-P-RKeVcDxC6zKpwdcqL-I3gS2FOU_Kq2XI5CNFDBADTPPGJop0lzp-FDM3rRQ7_1-2JiCkXEz0VwYClikKitvamWUTjv4-VzMwH6wSZ8RQ1XYVPG4ouEUz07odBcxU4_7o0fFNxHbwJc_879m2f2o_9vi8Wj8G1nB8gmcFi73OtXl9B_RaD28jArhnEPM8EAl_MU8hpUjzshq9QwogEi2yQ1DLlB6pYKsE-aYBiJ22zC9A9Mo"/>
-</div>
-<h3 class="font-serif text-lg mb-1">Café Arbour</h3>
-<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
-<span>Delhi</span>
-<span>•</span>
-<span>Commercial</span>
-<span>•</span>
-<span>1200 sq ft</span>
-</div>
-</div>
+
+<div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- Dynamic Projects will be injected here -->
+  <div class="col-span-full py-12 text-center text-gray-400 text-sm">Loading projects...</div>
 </div>
 </div>
 </section>
+
+<script>
+  let allProjects = [];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchProjects();
+  });
+
+  async function fetchProjects() {
+    try {
+      const res = await fetch("/api/projects");
+      if (!res.ok) throw new Error("Failed to load projects");
+      allProjects = await res.json();
+      renderProjects();
+    } catch (err) {
+      console.error(err);
+      document.getElementById("projects-grid").innerHTML = `
+        <div class="col-span-full py-12 text-center text-red-500 text-sm">
+          Failed to load projects. Make sure the database schema is generated and Netlify dev is running.
+        </div>
+      `;
+    }
+  }
+
+  function renderProjects() {
+    const grid = document.getElementById("projects-grid");
+    if (!allProjects.length) {
+      grid.innerHTML = '<div class="col-span-full py-12 text-center text-gray-400 text-sm">No projects found.</div>';
+      return;
+    }
+
+    grid.innerHTML = allProjects.map(proj => `
+      <div class="group relative" data-purpose="project-card">
+        <div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100 relative">
+          <img alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${proj.imageUrl}"/>
+        </div>
+        <h3 class="font-serif text-lg mb-1">${proj.title}</h3>
+        <div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
+          <span>${proj.location}</span>
+          <span>•</span>
+          <span>${proj.category}</span>
+          <span>•</span>
+          <span>${proj.size}</span>
+        </div>
+      </div>
+    `).join("");
+  }
+</script>
 <!-- END: SelectedWork -->
 <!-- BEGIN: OurServices -->
 <section class="py-24 bg-atelier-dim" data-purpose="services">
 <div class="max-w-7xl mx-auto px-6">
 <div class="mb-16">
+...
 <h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">What We Do</h4>
 <h2 class="font-serif text-4xl">Our Services</h2>
 </div>
