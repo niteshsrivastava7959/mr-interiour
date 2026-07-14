@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mr Interior Designer - Timeless Interior Atelier</title>
+<!-- Google Fonts: Playfair Display & Montserrat for clean sans-serif -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'atelier-surface': '#fbf9f9',
+            'atelier-dark': '#1a1a1a',
+            'atelier-accent': '#dbdad9',
+            'atelier-dim': '#f5f3f3',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-overrides">
+    body {
+      background-color: #fbf9f9;
+      color: #1a1a1a;
+    }
+    .hero-gradient {
+      background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.4));
+    }
+  </style>
+</head>
+<body class="font-sans">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100" data-purpose="site-navigation">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<div class="flex flex-col leading-tight" data-purpose="logo">
+<span class="font-serif text-xl font-bold tracking-widest">MR</span>
+<span class="text-[10px] tracking-[0.2em] font-medium">INTERIOR</span>
+<span class="text-[10px] tracking-[0.2em] font-medium">DESIGNER</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex space-x-10 text-xs font-medium uppercase tracking-widest">
+<a class="border-b border-black pb-1" href="#">Home</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Portfolio</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Services</a>
+<a class="hover:text-gray-500 transition-colors" href="#">About Us</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Contact</a>
+</nav>
+<!-- CTA & Menu Toggle -->
+<div class="flex items-center space-x-6">
+<button class="bg-atelier-dark text-white px-6 py-3 text-xs font-bold tracking-widest hover:bg-black transition-all">BOOK CONSULTATION</button>
+<button class="md:hidden">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-20" data-purpose="hero-carousel">
+<div class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+<div class="relative w-full h-[600px] overflow-hidden group">
+<!-- Using high quality interior placeholder -->
+<img alt="Interior Design" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQqe44mZJZOKDi09xbSLTo7LX64VvJFX-j1w6OSc9e7Cnm7XvsxvLXbRtqdQJ6h2ayHD019ay889QzsFWbk-O5LzfoJdza7oyNWM4r3_8UBF__1ELyvI4UauXF4BxefVdDi-MO6atzX-nWxtRPnO-Hffs5WbxGxyQwsE1Pf77DGsG6IrpyyswRq3ltHnmLGd9kaHic9MYnhaooQr6E_3NLqEjPyjOA3cJHInwe9y3C5hgs4nhPKDqBjfiODodEIzOZSgxyM2sO4jk"/>
+<!-- Content Overlay -->
+<div class="absolute inset-0 flex flex-col justify-center px-12 md:px-20 bg-black/5">
+<div class="max-w-2xl bg-white/20 backdrop-blur-md p-8 md:p-12 border border-white/30">
+<h1 class="font-serif text-5xl md:text-7xl leading-tight mb-6">Interior Spaces Designed Around People</h1>
+<p class="text-sm md:text-base text-gray-800 mb-10 max-w-md font-light leading-relaxed">
+              We design and build beautiful, functional residential and commercial spaces across Delhi NCR.
+            </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-atelier-dark text-white px-8 py-4 text-xs font-bold tracking-widest">VIEW PORTFOLIO</button>
+<button class="bg-white/80 border border-atelier-dark text-atelier-dark px-8 py-4 text-xs font-bold tracking-widest">BOOK CONSULTATION</button>
+</div>
+</div>
+</div>
+<!-- Carousel Indicators -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+<div class="w-2 h-2 rounded-full bg-white opacity-100"></div>
+<div class="w-2 h-2 rounded-full bg-white opacity-40"></div>
+<div class="w-2 h-2 rounded-full bg-white opacity-40"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: StatsBar -->
+<section class="bg-atelier-dim py-12" data-purpose="quick-stats">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+<!-- Stat 1 -->
+<div class="flex flex-col items-center text-center border-r border-gray-200 last:border-0">
+<svg class="w-8 h-8 mb-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+<div class="font-serif text-2xl font-bold">7+</div>
+<div class="text-[10px] tracking-widest text-gray-500 uppercase mt-1">Years Experience</div>
+</div>
+<!-- Stat 2 -->
+<div class="flex flex-col items-center text-center border-r border-gray-200 last:border-0">
+<svg class="w-8 h-8 mb-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+<div class="font-serif text-2xl font-bold">100+</div>
+<div class="text-[10px] tracking-widest text-gray-500 uppercase mt-1">Projects Completed</div>
+</div>
+<!-- Stat 3 -->
+<div class="flex flex-col items-center text-center border-r border-gray-200 last:border-0">
+<svg class="w-8 h-8 mb-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+<div class="font-serif text-2xl font-bold uppercase">Delhi NCR</div>
+<div class="text-[10px] tracking-widest text-gray-500 uppercase mt-1">Service Location</div>
+</div>
+<!-- Stat 4 -->
+<div class="flex flex-col items-center text-center">
+<svg class="w-8 h-8 mb-4 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+<div class="font-serif text-lg font-bold leading-tight">Residential &amp; Commercial</div>
+<div class="text-[10px] tracking-widest text-gray-500 uppercase mt-1">Projects</div>
+</div>
+</div>
+</section>
+<!-- END: StatsBar -->
+<!-- BEGIN: SelectedWork -->
+<section class="py-24" data-purpose="portfolio-preview">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">Featured Projects</h4>
+<h2 class="font-serif text-4xl">Selected Work</h2>
+</div>
+<a class="text-[10px] font-bold tracking-widest border-b border-black pb-1 flex items-center group" href="#">
+          VIEW ALL PROJECTS 
+          <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Project 1 -->
+<div class="group" data-purpose="project-card">
+<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
+<img alt="Modern Apartment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDltJZkGBk2FD0kb2dkbX6kdQAh4gtLaTc60MfbciJdl2Qh4f2CqSQOxLl7dcYK8REmgCRgH2E6_mhwZwEQ8nk_JLm2dlfTcq7kGPSWlMd5A8clEHrMkMVLUqKLyfbgm0s_WuudWKUJxD4PCBkP4EP7XO7Ob2CHzaI1R1KS6HL9-ID5-8gYyuTRnseTrxVdNj_1gB1bETgDi0rL9YGfVBR2c3-09UTUcrgMrZpTIqsAIEXpXNWNLqSjQkzV_4lRTp9oaHVpbnZlc0s"/>
+</div>
+<h3 class="font-serif text-lg mb-1">Modern Apartment</h3>
+<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
+<span>Gurugram</span>
+<span>•</span>
+<span>Residential</span>
+<span>•</span>
+<span>1800 sq ft</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group" data-purpose="project-card">
+<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
+<img alt="The Urban Nest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfKcuCNZlloheVXw_hC8i8MSzTknRBRRv8LigfBeSSd-YiaVzZhIEGFGqjEk_xXnDXyN2w067it7fnUbZGBrhb-eqJVEnl37vtgynTfcSDgE_criuSRtWQly4TXbq4wFKnnWzhv213imDV47jEXcqcyW4QxEc_Ze8w3Gq04U7CqKrjBzcPFCeGr-IATZ1hHaDGRm2lAX3Ii0r1TNrywl1E4uAn_yVGEMZG2KQx2dpLoEM5U3Uk3wi7aZJbcD7PKBT7U5UreeUqeU"/>
+</div>
+<h3 class="font-serif text-lg mb-1">The Urban Nest</h3>
+<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
+<span>Delhi</span>
+<span>•</span>
+<span>Residential</span>
+<span>•</span>
+<span>2200 sq ft</span>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group" data-purpose="project-card">
+<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
+<img alt="Corporate Office" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT5jtjLDeJ1uLIAG6-z3f0R7WmO45ATObfe70gG-rQFGOEhl-vJAR36idng2fTTAiNvHnPU3Vtizb9WRD-QDY1FmzJ8XrwFrVPKUnxXpgyEGiKWevuHCwQfzSCyF2VH0VE1ZZNP4A9K1WPeTv3F9UvMcyRA8csb3tEYf0YKqTPz6KElN15uBgz2DsXmdVvKFbTy4M6veNsk9Whi4EZ5AKDa9JE35A1404SlQwuw7K_Jno4UN_zoUJ3DcyIJE-b5RZmXxYYBc7MuzI"/>
+</div>
+<h3 class="font-serif text-lg mb-1">Corporate Office</h3>
+<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
+<span>Noida</span>
+<span>•</span>
+<span>Commercial</span>
+<span>•</span>
+<span>4500 sq ft</span>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="group" data-purpose="project-card">
+<div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100">
+<img alt="Café Arbour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTryY_m2bCwLuIDUOG1fCJT5TSu-P-RKeVcDxC6zKpwdcqL-I3gS2FOU_Kq2XI5CNFDBADTPPGJop0lzp-FDM3rRQ7_1-2JiCkXEz0VwYClikKitvamWUTjv4-VzMwH6wSZ8RQ1XYVPG4ouEUz07odBcxU4_7o0fFNxHbwJc_879m2f2o_9vi8Wj8G1nB8gmcFi73OtXl9B_RaD28jArhnEPM8EAl_MU8hpUjzshq9QwogEi2yQ1DLlB6pYKsE-aYBiJ22zC9A9Mo"/>
+</div>
+<h3 class="font-serif text-lg mb-1">Café Arbour</h3>
+<div class="flex items-center text-[10px] text-gray-500 uppercase tracking-widest space-x-2">
+<span>Delhi</span>
+<span>•</span>
+<span>Commercial</span>
+<span>•</span>
+<span>1200 sq ft</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SelectedWork -->
+<!-- BEGIN: OurServices -->
+<section class="py-24 bg-atelier-dim" data-purpose="services">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">What We Do</h4>
+<h2 class="font-serif text-4xl">Our Services</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<!-- Service 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 5L6 9v11h3v-7h4v7h3V9l-5-4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3 class="font-serif text-xl mb-4">Design</h3>
+<p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">Concept development, space planning, 3D visualization and design detailing.</p>
+</div>
+<!-- Service 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3 class="font-serif text-xl mb-4">Development</h3>
+<p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">Material selection, planning, procurement and site coordination.</p>
+</div>
+<!-- Service 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3 class="font-serif text-xl mb-4">Renovation</h3>
+<p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">Transforming existing spaces with smart design and quality execution.</p>
+</div>
+<!-- Service 4 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 mb-6 flex items-center justify-center">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3 class="font-serif text-xl mb-4">Consultation</h3>
+<p class="text-xs text-gray-500 leading-relaxed max-w-[200px]">Expert guidance for homeowners, businesses and developers at every step.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: OurServices -->
+<!-- BEGIN: OurProcess -->
+<section class="py-24" data-purpose="process-timeline">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">Our Process</h4>
+<h2 class="font-serif text-4xl">A Simple, Collaborative Process</h2>
+</div>
+<div class="relative mt-20">
+<!-- Connecting Line -->
+<div class="absolute top-10 left-0 w-full h-[1px] bg-gray-200 border-dashed border-t md:block hidden"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+</div>
+<span class="text-[10px] text-gray-400 mb-2">01</span>
+<h3 class="font-serif text-lg mb-3">Discover</h3>
+<p class="text-[11px] text-gray-500 max-w-[160px]">We understand your needs, lifestyle, goals and budget.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 5L6 9v11h3v-7h4v7h3V9l-5-4z"></path></svg>
+</div>
+<span class="text-[10px] text-gray-400 mb-2">02</span>
+<h3 class="font-serif text-lg mb-3">Design</h3>
+<p class="text-[11px] text-gray-500 max-w-[160px]">Concepts, layouts and 3D visualizations come to life.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path></svg>
+</div>
+<span class="text-[10px] text-gray-400 mb-2">03</span>
+<h3 class="font-serif text-lg mb-3">Develop</h3>
+<p class="text-[11px] text-gray-500 max-w-[160px]">Material selection, costing and detailed planning.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-white border border-gray-100 shadow-sm rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
+</div>
+<span class="text-[10px] text-gray-400 mb-2">04</span>
+<h3 class="font-serif text-lg mb-3">Deliver</h3>
+<p class="text-[11px] text-gray-500 max-w-[160px]">Execution with quality and timely handover.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: OurProcess -->
+<!-- BEGIN: Testimonials -->
+<section class="py-24 bg-atelier-dim" data-purpose="testimonials">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">Clients Love Us</h4>
+<h2 class="font-serif text-4xl">What Our Clients Say</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Quote 1 -->
+<div class="bg-white p-10 flex flex-col justify-between" data-purpose="testimonial-card">
+<div>
+<span class="font-serif text-6xl text-gray-200 block -mt-4 mb-2">“</span>
+<p class="text-sm text-gray-600 leading-relaxed italic">Mr Interior Designer understood our vision perfectly and turned our house into a beautiful home.</p>
+</div>
+<div class="flex items-center mt-10">
+<img alt="Priya Sharma" class="w-12 h-12 rounded-full mr-4 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA59pRz1dSLWRBjtTOA0nZc5gxxJ49ZnGGZNZdS5pYQNAQusC8z_36NH3bmygp8GQxJnuD6g8xRyCcsz0FLI8PFPbQCnIhYw8ZkGtIx67MRpSk7b9HqMKlq95Q4G4yKr8OAmTHuZDl1fBk4PTa1lifo11xVZQwzNPQhw9iEMQD6vvztFwmVaW61NbNcpKwioG5PTVvKytDLvD4_TEIjbItm2w9Lxy_UpyQYpXpCYDPrBGFlubQsW3BubKw18Wb99gYu1s0L4GW_Fng"/>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-wider">Priya Sharma</h5>
+<span class="text-[10px] text-gray-400">Gurgaon</span>
+</div>
+</div>
+</div>
+<!-- Quote 2 -->
+<div class="bg-white p-10 flex flex-col justify-between" data-purpose="testimonial-card">
+<div>
+<span class="font-serif text-6xl text-gray-200 block -mt-4 mb-2">“</span>
+<p class="text-sm text-gray-600 leading-relaxed italic">Professional team, great ideas and seamless execution. Highly recommended!</p>
+</div>
+<div class="flex items-center mt-10">
+<img alt="Rohit Malhotra" class="w-12 h-12 rounded-full mr-4 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYrng2zem_PvhTi1lCmNDZfnbIfNwsFUpdxJLkXy2SoCUItcJZC4qjRduVqXucreN6KCC2Uh5mAkuanHWO7HyZCZaQ_Vf8byiAHFoKcJSq4hhd1uNqz8N704XdMlqZRYI1CaJFlg8NrhlnMEbrm9_QwecYrCZK0VNoBA63ADfgTMxPBVZwhYvOyvm4EiE_cwOmgo2T623eWZrxKUcmm7DAnmiam01io7sQY-YSoADYtRNoA8XO8LQI2iCITCAyxmUAAeY4asd7lhg"/>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-wider">Rohit Malhotra</h5>
+<span class="text-[10px] text-gray-400">Delhi</span>
+</div>
+</div>
+</div>
+<!-- Quote 3 -->
+<div class="bg-white p-10 flex flex-col justify-between" data-purpose="testimonial-card">
+<div>
+<span class="font-serif text-6xl text-gray-200 block -mt-4 mb-2">“</span>
+<p class="text-sm text-gray-600 leading-relaxed italic">From design to delivery, everything was handled with so much clarity and dedication.</p>
+</div>
+<div class="flex items-center mt-10">
+<img alt="Anjali Mehta" class="w-12 h-12 rounded-full mr-4 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfX_0c7w2z5l9BRhPElWMwC6o3mkHmNaId0Oae1WsmrKhe3bwD3i5_qojrudhIjnMHTMQFZAh35MFGqnLhnC-x6TGug9xpX0v3xhzBF7E1a97rBtwREiTGoksGqVvao5J7O1KbhJS_HhHVpMwhTZFg2dF7eoAOakKTLE1cLFV_bg0GqchpVCHdCrkDsZ_Q1xL3xRuzxIK1UKCJy5xRry3aNTxvXA2PsMsyi8tnszcdTWJxIdJa6BqM-vZW-5FBY8-uyKmFPggSQyo"/>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-wider">Anjali Mehta</h5>
+<span class="text-[10px] text-gray-400">Noida</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Testimonials -->
+<!-- BEGIN: AboutTeam -->
+<section class="py-24" data-purpose="about-team">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-4">
+<h4 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400 mb-2">About Us</h4>
+<h2 class="font-serif text-4xl mb-8 leading-tight">A Small Team With A Passion For Better Spaces</h2>
+<p class="text-sm text-gray-500 leading-relaxed mb-10">
+          Based in Delhi NCR, we are a team of designers, architects and craftsmen who believe that good design improves the way people live and work. We create spaces that are simple, functional and crafted with attention to detail.
+        </p>
+<button class="bg-atelier-dark text-white px-8 py-4 text-xs font-bold tracking-widest">KNOW MORE ABOUT US</button>
+</div>
+<div class="lg:col-span-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Member 1 -->
+<div>
+<img alt="Rohit Kumar" class="aspect-[4/5] object-cover bg-gray-100 mb-4 grayscale hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1H1_SSvKQAhBbfPSnVNJuljIG1pAZGQa_Pw0NAwbnDmI7AC6sTfcpHQXVlt8l8zRSaHVw4P-NBXIVjSnPNx8hvmvT5gE-HZPp6wIkaxeB7unVDOL9C0kPl5AcyIc0_cV6uMT8R7-uYN3va0CmoJAXeX61pG5MaItwlOprbgVzLODDWkHdO73kcbTsJkLHddhKt_nT97arvs7DFn7UWC7SArZzNluPmQs2IvUO32YYTx5xU9iaMe0PzEmS9GwbvEcRhBt5iJZ81hs"/>
+<h5 class="font-bold text-xs uppercase tracking-wider">Rohit Kumar</h5>
+<span class="text-[10px] text-gray-400">Founder &amp; Principal Designer</span>
+</div>
+<!-- Member 2 -->
+<div>
+<img alt="Neha Tiwari" class="aspect-[4/5] object-cover bg-gray-100 mb-4 grayscale hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK8QclYsWqMe1jwUbeH2eW04MZq41J8wOpp1TZp6O2JXYR7BiQoiLTgzb_3M2bqvii6wu871KaJILJpIcvUyUs5m8GW9wMhhGdTAc_Vrzqhs9yK6dct_PhnKjQe9d83l7gUvGS0qGNDHVdixptHachHRhL1dLZ7NuiuITOccUrSrS5-zjEp6AzW0RBMqgWSwdJimD4xmzuh2fxlOdu3lboH_she8gLrWNOtgycf-PR6mTeKqFxZqwAPMy1HMVhJ4G0CHsBgXLybt4"/>
+<h5 class="font-bold text-xs uppercase tracking-wider">Neha Tiwari</h5>
+<span class="text-[10px] text-gray-400">Interior Designer</span>
+</div>
+<!-- Member 3 -->
+<div>
+<img alt="Arjun Singh" class="aspect-[4/5] object-cover bg-gray-100 mb-4 grayscale hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBETY777vxwGRAkKYzVwXf99K3ET3v7S0x3HzUhQN0VLvykkrTxUnWs2Xdo0Y8bEHg6cvIMverxM11rj89YT3Um3cFfXjpAGYWA0FFQF64XjN7eBVzdJHzVoe2kFcyFXcB1Z3NgOXAtaYU6amqRaG-2RV70oXvO_1YKoN5oO2E7Br9ewlVIOfcIba7_E-baJyVE2EzX_8AS4KnTjj11fh_hgD4VfgfElhIJvizhBMBhOopaUo_BNZLo5SBu04l7VDKjnQVgC-ql6GI"/>
+<h5 class="font-bold text-xs uppercase tracking-wider">Arjun Singh</h5>
+<span class="text-[10px] text-gray-400">Project Architect</span>
+</div>
+<!-- Member 4 -->
+<div>
+<img alt="Pooja Verma" class="aspect-[4/5] object-cover bg-gray-100 mb-4 grayscale hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9YKY1-qk3lMbSbu9MUm3SVFaryW3bi60H5vhO_z-rszRLhVnb1lFuseA5mVtWl2kPNoSldh_zK1qDLMb0ZAtA3_9t2gbu2sAd_POkpicxR0MwszXgcF1pcTsWtLD3TrfpdHSxPjuJzuln27Pec2CPoNuI50aYmg0zIpLLnlGMXmxKOXF3i-MFROGIF1xcmeCfYE_ug1jdl9pT3s19JeczX-NG_o-Rf7PYiHVXksY20ae5rfk02l7_4lSCNwPYtb5U0Xwx-NsagrM"/>
+<h5 class="font-bold text-xs uppercase tracking-wider">Pooja Verma</h5>
+<span class="text-[10px] text-gray-400">Design Consultant</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutTeam -->
+<!-- BEGIN: CTASection -->
+<section class="relative py-32 overflow-hidden" data-purpose="final-cta">
+<div class="absolute inset-0 z-0">
+<img alt="CTA Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSwwr9UPJ1_zf9ZcSoE-JpGLqftqyLaWDXeDu2VBvXKQ53S-ZQb8iadmHPS3cv9IvkvygAEuscjXH64Rn20MHkk2ddVcBDIddsBwv3Y-QIbN5u_l-ebIC77pRh9qmiSi5nkQ6uvOBp2CucrsLollm-_wPBVHLQ7zlF5fPKcnnwYte4WideGSOHSQpQAxAgWRsqeEWriSvluEKkEAhFUJO58yqBTwcqU2JOr6R51ebaFSeXwORvcrNlrl4StZPZNgI_Bz3UIZD3_j0"/>
+<div class="absolute inset-0 bg-black/60"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
+<h2 class="font-serif text-4xl md:text-5xl mb-12">Let's Design Something Meaningful Together</h2>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="bg-white text-atelier-dark px-10 py-4 text-xs font-bold tracking-widest hover:bg-gray-100 transition-all">BOOK A CONSULTATION</button>
+<button class="border border-white text-white px-10 py-4 text-xs font-bold tracking-widest flex items-center hover:bg-white/10 transition-all">
+<svg class="w-4 h-4 mr-2" fill="currentColor" viewbox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793 0-.852.448-1.271.607-1.445.158-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.088.275.073.376-.043.101-.116.433-.506.548-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.13.332.202.045.072.045.419-.1.824z"></path></svg>
+          WHATSAPP US
+        </button>
+</div>
+</div>
+</section>
+<!-- END: CTASection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-atelier-dark text-white pt-24 pb-12" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 border-b border-white/10 pb-20">
+<!-- Brand -->
+<div class="lg:col-span-3">
+<div class="flex flex-col leading-tight mb-8" data-purpose="logo">
+<span class="font-serif text-2xl font-bold tracking-widest">MR</span>
+<span class="text-[10px] tracking-[0.2em] font-medium">INTERIOR</span>
+<span class="text-[10px] tracking-[0.2em] font-medium">DESIGNER</span>
+</div>
+<p class="text-xs text-gray-400 leading-relaxed mb-8">Designing spaces that inspire, elevate and enrich everyday life.</p>
+<div class="flex space-x-4">
+<a class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-atelier-dark transition-all" href="#"><i class="text-sm">ig</i></a>
+<a class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-atelier-dark transition-all" href="#"><i class="text-sm">fb</i></a>
+<a class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-atelier-dark transition-all" href="#"><i class="text-sm">pi</i></a>
+<a class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-atelier-dark transition-all" href="#"><i class="text-sm">ln</i></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div class="lg:col-span-2">
+<h6 class="text-[10px] uppercase tracking-widest font-bold mb-8">Quick Links</h6>
+<ul class="text-xs space-y-4 text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Portfolio</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Services</a></li>
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<!-- Services -->
+<div class="lg:col-span-2">
+<h6 class="text-[10px] uppercase tracking-widest font-bold mb-8">Services</h6>
+<ul class="text-xs space-y-4 text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Residential Interiors</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Commercial Interiors</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Turnkey Projects</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Renovation</a></li>
+<li><a class="hover:text-white transition-colors" href="#">3D Design &amp; Visualization</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Consultation</a></li>
+</ul>
+</div>
+<!-- Contact Us -->
+<div class="lg:col-span-2">
+<h6 class="text-[10px] uppercase tracking-widest font-bold mb-8">Contact Us</h6>
+<ul class="text-xs space-y-4 text-gray-400">
+<li class="flex items-start">
+<span class="mr-2">☏</span>
+              +91 98765 43210
+            </li>
+<li class="flex items-start">
+<span class="mr-2">✉</span>
+              hello@mrinteriordesigner.com
+            </li>
+<li class="flex items-start">
+<span class="mr-2">⌖</span>
+              Delhi NCR
+            </li>
+<li class="flex items-start">
+<span class="mr-2">🕒</span>
+              Mon - Sat: 10:00 AM - 7:00 PM
+            </li>
+</ul>
+</div>
+<!-- Newsletter -->
+<div class="lg:col-span-3">
+<h6 class="text-[10px] uppercase tracking-widest font-bold mb-8">Newsletter</h6>
+<p class="text-xs text-gray-400 mb-6">Stay updated with our latest projects and design ideas.</p>
+<div class="flex border-b border-white/30 pb-2">
+<input class="bg-transparent border-none focus:ring-0 text-xs w-full text-white placeholder-gray-500" placeholder="Enter your email" type="email"/>
+<button class="text-white ml-2">→</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center mt-12 text-[10px] text-gray-500 tracking-widest">
+<p>© 2024 Mr Interior Designer. All Rights Reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
