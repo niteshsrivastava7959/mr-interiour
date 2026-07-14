@@ -1,1 +1,1 @@
-# mr-interiour
+# mr-interior-designer
