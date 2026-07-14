@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Admin Portal - Mr Interior Designer</title>
+  <!-- Google Fonts & Tailwind CSS matching the atelier theme -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'atelier-surface': '#fbf9f9',
+            'atelier-dark': '#1a1a1a',
+            'atelier-accent': '#dbdad9',
+            'atelier-dim': '#f5f3f3',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-atelier-surface text-atelier-dark font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 py-6 px-8 flex justify-between items-center">
+    <div class="flex flex-col leading-tight">
+      <span class="font-serif text-xl font-bold tracking-widest">MR</span>
+      <span class="text-[10px] tracking-[0.2em] font-medium">INTERIOR DESIGNER</span>
+    </div>
+    <a href="/" class="text-xs uppercase tracking-widest font-bold border-b border-black pb-1 hover:text-gray-500 transition-colors">← Back to Site</a>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center p-6">
+    
+    <!-- Admin Login Panel -->
+    <div id="login-container" class="bg-white max-w-md w-full p-10 border border-gray-100 shadow-xl">
+      <h2 class="font-serif text-3xl mb-2">Admin Sign In</h2>
+      <p class="text-xs text-gray-400 mb-8 tracking-wider uppercase font-medium">Manage Atelier Portfolio Content</p>
+      
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+        <div class="mb-4">
+          <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Username</label>
+          <input type="text" id="admin-username" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="admin" />
+        </div>
+        <div class="mb-6">
+          <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Password</label>
+          <input type="password" id="admin-password" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="••••••••" />
+        </div>
+        <div id="login-error" class="text-xs text-red-600 mb-4 hidden"></div>
+        <button type="submit" class="w-full bg-atelier-dark text-white py-3.5 text-xs font-bold tracking-widest hover:bg-black transition-all">LOG IN</button>
+      </form>
+    </div>
+
+    <!-- Admin Dashboard (Visible after login) -->
+    <div id="dashboard-container" class="hidden max-w-6xl w-full flex flex-col gap-8">
+      <div class="flex justify-between items-end border-b border-gray-200 pb-6">
+        <div>
+          <h1 class="font-serif text-4xl mb-1">Portfolio Dashboard</h1>
+          <p class="text-xs text-gray-500 uppercase tracking-widest">Logged in as Administrator</p>
+        </div>
+        <div class="flex space-x-4">
+          <button onclick="openProjectForm()" class="bg-atelier-dark text-white text-xs font-bold tracking-widest px-6 py-3 hover:bg-black transition-colors uppercase">ADD NEW WORK</button>
+          <button onclick="adminLogout()" class="border border-red-200 text-red-600 text-xs font-bold tracking-widest px-6 py-3 hover:bg-red-50 transition-colors uppercase">LOGOUT</button>
+        </div>
+      </div>
+
+      <!-- Live Works List -->
+      <div>
+        <h3 class="font-serif text-xl mb-6">Current Portfolio (Selected Work)</h3>
+        <div id="admin-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="col-span-full py-12 text-center text-gray-400 text-sm">Loading works...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Project Form Modal (Add / Edit) -->
+  <div id="project-form-modal" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white max-w-lg w-full p-10 border border-gray-100 shadow-xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeProjectForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black font-bold text-xl">&times;</button>
+      <h3 id="form-modal-title" class="font-serif text-2xl mb-6">Add New Work</h3>
+      <form id="project-form" onsubmit="handleProjectSubmit(event)">
+        <input type="hidden" id="form-project-id" />
+        <div class="mb-4">
+          <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Project Title</label>
+          <input type="text" id="form-title" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="e.g. Modern Apartment" />
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Location</label>
+            <input type="text" id="form-location" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="e.g. Gurugram" />
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Category</label>
+            <input type="text" id="form-category" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="e.g. Residential" />
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Size (sq ft)</label>
+          <input type="text" id="form-size" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="e.g. 1800 sq ft" />
+        </div>
+        <div class="mb-6">
+          <label class="block text-[10px] tracking-widest text-gray-500 uppercase font-bold mb-2">Image URL</label>
+          <input type="url" id="form-image-url" required class="w-full text-sm border-gray-200 focus:border-black focus:ring-0 py-2.5" placeholder="https://..." />
+        </div>
+        <div id="form-error" class="text-xs text-red-600 mb-4 hidden"></div>
+        <button type="submit" class="w-full bg-atelier-dark text-white py-3.5 text-xs font-bold tracking-widest hover:bg-black transition-all uppercase">Save Project</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t border-gray-100 py-6 text-center text-[10px] text-gray-400 tracking-widest">
+    <p>© 2024 Mr Interior Designer Admin Portal. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    let allProjects = [];
+    let token = localStorage.getItem("admin_token") || "";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkAuth();
+    });
+
+    function checkAuth() {
+      const loginContainer = document.getElementById("login-container");
+      const dashboardContainer = document.getElementById("dashboard-container");
+
+      if (token) {
+        loginContainer.classList.add("hidden");
+        dashboardContainer.classList.remove("hidden");
+        fetchProjects();
+      } else {
+        loginContainer.classList.remove("hidden");
+        dashboardContainer.classList.add("hidden");
+      }
+    }
+
+    async function handleAdminLogin(event) {
+      event.preventDefault();
+      const user = document.getElementById("admin-username").value;
+      const pass = document.getElementById("admin-password").value;
+      const errDiv = document.getElementById("login-error");
+
+      try {
+        const res = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: user, password: pass })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Login failed");
+
+        token = data.token;
+        localStorage.setItem("admin_token", token);
+        checkAuth();
+      } catch (err) {
+        errDiv.innerText = err.message;
+        errDiv.classList.remove("hidden");
+      }
+    }
+
+    function adminLogout() {
+      token = "";
+      localStorage.removeItem("admin_token");
+      checkAuth();
+    }
+
+    async function fetchProjects() {
+      try {
+        const res = await fetch("/api/projects");
+        if (!res.ok) throw new Error("Failed to load projects");
+        allProjects = await res.json();
+        renderProjects();
+      } catch (err) {
+        console.error(err);
+        document.getElementById("admin-projects-grid").innerHTML = `
+          <div class="col-span-full py-12 text-center text-red-500 text-sm">
+            Failed to load projects. Make sure the database schema is generated and Netlify dev is running.
+          </div>
+        `;
+      }
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById("admin-projects-grid");
+      if (!allProjects.length) {
+        grid.innerHTML = '<div class="col-span-full py-12 text-center text-gray-400 text-sm">No projects found.</div>';
+        return;
+      }
+
+      grid.innerHTML = allProjects.map(proj => `
+        <div class="group relative bg-white border border-gray-100 p-4 shadow-sm" data-purpose="project-card">
+          <div class="aspect-[4/5] overflow-hidden mb-4 bg-gray-100 relative">
+            <img alt="${proj.title}" class="w-full h-full object-cover" src="${proj.imageUrl}"/>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
+              <button onclick="editProject(${proj.id})" class="bg-white text-atelier-dark px-3 py-1.5 text-[10px] font-bold tracking-wider hover:bg-gray-100">EDIT</button>
+              <button onclick="deleteProject(${proj.id})" class="bg-red-600 text-white px-3 py-1.5 text-[10px] font-bold tracking-wider hover:bg-red-700">DELETE</button>
+            </div>
+          </div>
+          <h3 class="font-serif text-lg mb-1">${proj.title}</h3>
+          <div class="flex flex-col text-[10px] text-gray-500 uppercase tracking-widest gap-1 mt-2">
+            <span><strong>Location:</strong> ${proj.location}</span>
+            <span><strong>Category:</strong> ${proj.category}</span>
+            <span><strong>Size:</strong> ${proj.size}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Modal Operations
+    function openProjectForm() {
+      document.getElementById("form-modal-title").innerText = "Add New Work";
+      document.getElementById("project-form").reset();
+      document.getElementById("form-project-id").value = "";
+      document.getElementById("project-form-modal").classList.remove("hidden");
+      document.getElementById("project-form-modal").classList.add("flex");
+    }
+
+    function closeProjectForm() {
+      document.getElementById("project-form-modal").classList.add("hidden");
+      document.getElementById("project-form-modal").classList.remove("flex");
+      document.getElementById("form-error").classList.add("hidden");
+    }
+
+    function editProject(id) {
+      const proj = allProjects.find(p => p.id === id);
+      if (!proj) return;
+
+      document.getElementById("form-modal-title").innerText = "Edit Work";
+      document.getElementById("form-project-id").value = proj.id;
+      document.getElementById("form-title").value = proj.title;
+      document.getElementById("form-location").value = proj.location;
+      document.getElementById("form-category").value = proj.category;
+      document.getElementById("form-size").value = proj.size;
+      document.getElementById("form-image-url").value = proj.imageUrl;
+
+      document.getElementById("project-form-modal").classList.remove("hidden");
+      document.getElementById("project-form-modal").classList.add("flex");
+    }
+
+    async function handleProjectSubmit(event) {
+      event.preventDefault();
+      const id = document.getElementById("form-project-id").value;
+      const title = document.getElementById("form-title").value;
+      const locationVal = document.getElementById("form-location").value;
+      const category = document.getElementById("form-category").value;
+      const size = document.getElementById("form-size").value;
+      const imageUrl = document.getElementById("form-image-url").value;
+      const errDiv = document.getElementById("form-error");
+
+      const payload = { title, location: locationVal, category, size, imageUrl };
+      const method = id ? "PUT" : "POST";
+      if (id) payload.id = id;
+
+      try {
+        const res = await fetch("/api/projects", {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Save operation failed");
+
+        closeProjectForm();
+        fetchProjects();
+      } catch (err) {
+        errDiv.innerText = err.message;
+        errDiv.classList.remove("hidden");
+      }
+    }
+
+    async function deleteProject(id) {
+      if (!confirm("Are you sure you want to delete this project?")) return;
+
+      try {
+        const res = await fetch(`/api/projects?id=${id}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Delete operation failed");
+
+        fetchProjects();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+  </script>
+</body>
+</html>
