@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mr-interiour",
+  "pages_build_output_dir": ".",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mr-interiour-db",
+      "database_id": "7fb49ecb-d982-4200-b695-9079baa2d5b5"
+    }
+  ]
+}

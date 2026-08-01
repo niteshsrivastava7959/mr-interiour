@@ -1,9 +1,23 @@
 {
+  "name": "mr-interiour",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "build": "echo 'No build step required for static HTML/JS'",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 execute mr-interiour-db --local --file=./migrations/0000_create_tables.sql",
+    "db:migrate:prod": "wrangler d1 execute mr-interiour-db --remote --file=./migrations/0000_create_tables.sql",
+    "deploy": "wrangler pages deploy ."
+  },
   "dependencies": {
-    "@netlify/database": "^1.1.0",
-    "drizzle-orm": "^1.0.0-beta.22"
+    "drizzle-orm": "^0.38.4"
   },
   "devDependencies": {
-    "drizzle-kit": "^1.0.0-beta.22"
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "drizzle-kit": "^0.30.4",
+    "typescript": "^5.7.3",
+    "wrangler": "^3.107.0"
   }
 }

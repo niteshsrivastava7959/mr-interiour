@@ -1,9 +1,12 @@
-import type { Config } from "@netlify/functions";
-import { db } from "../../db/index.js";
+import { getDb } from "../../db/index.js";
 import { projects, admins } from "../../db/schema.js";
 import { eq, desc } from "drizzle-orm";
 
-// Secret admin password (fallback/default) - for production, admins table would be populated
+interface Env {
+  DB: D1Database;
+}
+
+// Default admin credentials
 const DEFAULT_ADMIN_PASSWORD = "admin";
 const DEFAULT_ADMIN_USER = "admin";
 
@@ -39,20 +42,18 @@ const SEED_PROJECTS = [
   }
 ];
 
-// Helper to authenticate admin
 function verifyAdmin(req: Request): boolean {
   const authHeader = req.headers.get("authorization");
   if (!authHeader) return false;
   const token = authHeader.replace("Bearer ", "").trim();
-  // Simple token matching DEFAULT_ADMIN_PASSWORD for simplicity and security within scope
   return token === "admin-session-token-secret-12345";
 }
 
-export default async (req: Request) => {
-  const url = new URL(req.url);
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const { request, env } = context;
+  const url = new URL(request.url);
   const path = url.pathname;
 
-  // Simple CORS headers
   const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -60,16 +61,18 @@ export default async (req: Request) => {
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   };
 
-  if (req.method === "OPTIONS") {
+  if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers });
   }
 
   try {
+    const db = getDb(env.DB);
+
     // ----------------------------------------------------
     // ROUTE: POST /api/admin/login
     // ----------------------------------------------------
-    if (path === "/api/admin/login" && req.method === "POST") {
-      const { username, password } = await req.json();
+    if (path === "/api/admin/login" && request.method === "POST") {
+      const { username, password } = (await request.json()) as any;
 
       if (username === DEFAULT_ADMIN_USER && password === DEFAULT_ADMIN_PASSWORD) {
         return new Response(JSON.stringify({ 
@@ -84,7 +87,7 @@ export default async (req: Request) => {
     // ----------------------------------------------------
     // ROUTE: GET /api/projects (fetch and optionally seed)
     // ----------------------------------------------------
-    if (path === "/api/projects" && req.method === "GET") {
+    if (path === "/api/projects" && request.method === "GET") {
       let list = await db.select().from(projects).orderBy(desc(projects.createdAt));
 
       if (list.length === 0) {
@@ -99,12 +102,12 @@ export default async (req: Request) => {
     // ----------------------------------------------------
     // ROUTE: POST /api/projects (insert)
     // ----------------------------------------------------
-    if (path === "/api/projects" && req.method === "POST") {
-      if (!verifyAdmin(req)) {
+    if (path === "/api/projects" && request.method === "POST") {
+      if (!verifyAdmin(request)) {
         return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers });
       }
 
-      const body = await req.json();
+      const body = (await request.json()) as any;
       const { title, location, category, size, imageUrl } = body;
 
       if (!title || !location || !category || !size || !imageUrl) {
@@ -125,12 +128,12 @@ export default async (req: Request) => {
     // ----------------------------------------------------
     // ROUTE: PUT /api/projects (update)
     // ----------------------------------------------------
-    if (path === "/api/projects" && req.method === "PUT") {
-      if (!verifyAdmin(req)) {
+    if (path === "/api/projects" && request.method === "PUT") {
+      if (!verifyAdmin(request)) {
         return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers });
       }
 
-      const body = await req.json();
+      const body = (await request.json()) as any;
       const { id, title, location, category, size, imageUrl } = body;
 
       if (!id || !title || !location || !category || !size || !imageUrl) {
@@ -143,7 +146,7 @@ export default async (req: Request) => {
         category,
         size,
         imageUrl
-      }).where(eq(projects.id, parseInt(id))).returning();
+      }).where(eq(projects.id, Number(id))).returning();
 
       if (!updatedProj) {
         return new Response(JSON.stringify({ error: "Project not found" }), { status: 404, headers });
@@ -155,8 +158,8 @@ export default async (req: Request) => {
     // ----------------------------------------------------
     // ROUTE: DELETE /api/projects (delete)
     // ----------------------------------------------------
-    if (path === "/api/projects" && req.method === "DELETE") {
-      if (!verifyAdmin(req)) {
+    if (path === "/api/projects" && request.method === "DELETE") {
+      if (!verifyAdmin(request)) {
         return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers });
       }
 
@@ -167,7 +170,7 @@ export default async (req: Request) => {
         return new Response(JSON.stringify({ error: "Missing project ID" }), { status: 400, headers });
       }
 
-      const [deletedProj] = await db.delete(projects).where(eq(projects.id, parseInt(id))).returning();
+      const [deletedProj] = await db.delete(projects).where(eq(projects.id, Number(id))).returning();
 
       if (!deletedProj) {
         return new Response(JSON.stringify({ error: "Project not found" }), { status: 404, headers });
@@ -180,8 +183,4 @@ export default async (req: Request) => {
   } catch (err: any) {
     return new Response(JSON.stringify({ error: err.message || "Internal Server Error" }), { status: 500, headers });
   }
-};
-
-export const config: Config = {
-  path: ["/api/projects", "/api/admin/login"],
 };
